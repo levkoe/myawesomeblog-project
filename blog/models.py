@@ -12,3 +12,9 @@ class Post(models.Model):
     post_date = models.DateTimeField(auto_now_add=True)
     post_image = models.ImageField(upload_to="post_images/")
     post_status = models.IntegerField(choices=STATUS, default=0)
+
+    def get_summary(self):
+        return self.post_text[:144]
+
+    def __str__(self):
+        return self.post_title
